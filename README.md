@@ -1,76 +1,157 @@
-# Credit Default Risk Prediction with LightGBM
+# Credit Risk Assessment with LightGBM
 
-## Project Overview
-This project focuses on building a predictive model to assess credit risk. Credit risk, the chance of loss from a borrower's failure to repay a loan, is a key concern for lenders. Using LightGBM, we develop a classification model to predict loan defaulters and help minimize potential financial loss.
+A machine learning project for predicting loan defaults using LightGBM with advanced feature selection and model optimization techniques.
 
-## Business Context
-Credit risk assessment is essential for determining a borrower's likelihood of default, which allows lenders to make informed decisions. This project leverages demographic, employment, and credit history data to predict default risks.
+## Business Overview
 
-## Data Description
-The dataset contains information about **143,727 borrowers** and includes attributes like:
-- Employment Type
-- Work Experience
-- Income
-- Number of Dependents
-- Total Loans
-- Total Payment History
+Credit Risk represents the potential loss from a borrower's failure to repay loans or meet contractual obligations. This project implements a sophisticated credit risk assessment model to:
+- Evaluate borrower creditworthiness
+- Predict default probability
+- Minimize lending risks
+- Optimize loan approval decisions
+
+## Project Aim
+
+Develop a classification model to predict loan defaulters using credit history, employment, and demographic data, ultimately minimizing financial loss risk.
+
+## Dataset
+
+- 143,727 borrower records
+- Features include:
+  - Employment type
+  - Work experience
+  - Income
+  - Number of dependents
+  - Total loans
+  - Payment history
+  - And more
 
 ## Tech Stack
-- **Programming Language:** Python
-- **Libraries:** `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit_learn`, `lightgbm`, `hyperopt`, `shap`
 
-## Project Steps
-1. **Data Preparation**
-   - Data reading and processing
-   - Dropping unnecessary columns
-   - Data splitting
+- **Language:** Python
+- **Core Libraries:**
+  - pandas
+  - numpy
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - lightgbm
+  - hyperopt
+  - shap
 
-2. **Feature Engineering**
-   - Roll Rate Analysis
-   - Loan Repayment History Analysis
-   - Label and target encoding
+## Project Structure
 
-3. **Exploratory Data Analysis (EDA)**
-   - **Univariate Analysis:** Numerical (min, max, mean) and Categorical summaries
-   - **Bivariate Analysis:** Correlation plots and Box plots
+```
+├── input/
+│   └── credit_risk_data.csv
+├── documents/
+│   └── learning_materials/
+├── lib/
+│   └── notebooks/
+├── ml_pipeline/
+│   ├── data_processing/
+│   ├── feature_engineering/
+│   ├── model_training/
+│   └── evaluation/
+├── output/
+│   ├── models/
+│   └── results/
+├── engine.py
+├── requirements.txt
+└── README.md
+```
 
-4. **Model Development**
-   - **Model Selection:** Using LightGBM
-   - **Hyperparameter Tuning:** Optimized with `hyperopt`
-   - **Evaluation Metrics:** ROC AUC, PR AUC
+## Methodology
 
-5. **Feature Importance**
-   - Feature selection with SHAP and other techniques
+### 1. Data Processing
+- Column dropping
+- Data splitting
+- Label definition through Roll Rate Analysis
+- Window Roll Analysis
 
-6. **Threshold Analysis**
-   - Class rate curve for optimal threshold selection to minimize credit loss
+### 2. Feature Engineering
+- Label engineering
+- Interest payment ratio calculation
+- Historical default rate analysis
+- Custom financial metrics
 
-## Repository Structure
-- `input/`: Contains raw data (`credit_risk_data.csv`)
-- `documents/`: Supporting materials and references
-- `lib/`: Reference folder with the original Jupyter notebooks
-- `ml_pipeline/`: Contains modularized Python functions
-- `output/`: Stores model outputs
-- `engine.py`: Main script to run the full pipeline
-- `requirements.txt`: Libraries required for the project
-- `README.md`: Project documentation
+### 3. Exploratory Data Analysis
+- **Univariate Analysis**
+  - Numerical summaries
+  - Categorical distributions
+- **Bivariate Analysis**
+  - Correlation analysis
+  - Box plot visualizations
+
+### 4. Model Development
+- Target Encoding implementation
+- Feature Selection using:
+  - Random Forest
+  - Decision Tree
+- LightGBM model training
+- Hyperparameter optimization with Hyperopt
+
+### 5. Model Evaluation
+- ROC AUC scoring
+- PR AUC analysis
+- Score distribution assessment
+- Feature importance analysis:
+  - Split and Gain metrics
+  - SHAP values
+- Class Rate Curve analysis
+- Threshold optimization
 
 ## Installation
-To install the required packages, run:
+
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/credit-risk-assessment.git
+
+# Install requirements
 pip install -r requirements.txt
-Usage
-Run the engine.py script to execute the pipeline.
-Trained models and results will be saved in the output folder.
+```
 
-Key Insights
-Definition and importance of credit risk assessment
-Understanding "default" and "days past due" (dpd)
-Feature selection with Random Forest and Decision Tree
-Model parameter optimization using Hyperopt
-SHAP-based feature importance visualization
-Authors
-Developed by [Your Name/Team].
+## Usage
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+```bash
+# Run the complete pipeline
+python engine.py
+```
+
+## Key Learnings
+
+1. Credit risk assessment fundamentals
+2. Default prediction using Roll Rate Analysis
+3. DPD (Days Past Due) significance
+4. Target Encoding advantages
+5. Feature Selection techniques
+6. LightGBM optimization with Hyperopt
+7. SHAP-based model explainability
+8. Threshold optimization for credit loss minimization
+
+## Model Performance
+
+Results and model artifacts are saved in the `output` directory:
+- Trained models
+- Performance metrics
+- Feature importance visualizations
+- SHAP analysis plots
+- Class rate curves
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the `LICENSE` file for details.
+
+## Acknowledgments
+
+- Financial domain experts
+- Open-source ML community
+- Project contributors and reviewers
